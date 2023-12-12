@@ -302,3 +302,10 @@ const copySuccess = (index) => {
       copyButtons[index].classList.remove('copied');
    }, 700)
 }
+
+
+// PWA service worker
+if ("serviceWorker" in navigator) {
+   // register service worker
+   navigator.serviceWorker.register("service-worker.js");
+ }
