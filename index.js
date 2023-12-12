@@ -305,7 +305,12 @@ const copySuccess = (index) => {
 
 
 // PWA service worker
+document.addEventListener("DOMContentLoaded", showCoffees)
 if ("serviceWorker" in navigator) {
-   // register service worker
-   navigator.serviceWorker.register("service-worker.js");
- }
+  window.addEventListener("load", function() {
+    navigator.serviceWorker
+      .register("/serviceWorker.js")
+      .then(res => console.log("service worker registered"))
+      .catch(err => console.log("service worker not registered", err))
+  })
+}
