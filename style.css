@@ -487,7 +487,7 @@ footer p span {
 
     .similarSiteContainer {
         grid-column: 1/2;
-        grid-row: 1/12;
+        grid-row: 1/11;
     }
 
     .similarSite {
@@ -495,7 +495,7 @@ footer p span {
     }
 
     .colorsContainer {
-        grid-row: 12/13;
+        grid-row: 11/13;
         grid-column: 1/2;
     }
 
