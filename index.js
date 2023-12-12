@@ -305,7 +305,6 @@ const copySuccess = (index) => {
 
 
 // PWA service worker
-document.addEventListener("DOMContentLoaded", showCoffees)
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {
     navigator.serviceWorker
