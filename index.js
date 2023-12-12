@@ -267,9 +267,38 @@ function showProjectName(index) {
    projectNameDiv.innerHTML = projects[index].name;
 }
 showProjectName(0);
-// copy the color
-async function copyColor(colorIndex, projectIndex) {
-   var colorValue = await projects[projectIndex].colors[colorIndex].color;
-   alert(`Copy it here :        ${colorValue}`);
 
+// copy the color
+function copyColor(colorIndex, projectIndex) {
+   var colorValue = projects[projectIndex].colors[colorIndex].color
+   if (window.isSecureContext && navigator.clipboard) {
+      navigator.clipboard.writeText(colorValue);
+      copySuccess(colorIndex);
+   } else {
+      unsecuredCopyToClipboard(colorValue, colorIndex);
+   }
+};
+
+const unsecuredCopyToClipboard = (text, colorIndex) => {
+   const textArea = document.createElement("textarea");
+   textArea.value = text;
+   document.body.appendChild(textArea);
+   textArea.focus();
+   textArea.select();
+   try {
+      document.execCommand('copy')
+      copySuccess(colorIndex);
+   } catch (err) {
+      console.error('Unable to copy to clipboard', err);
+      alert(`copy it here : ${text}`);
+   }
+   document.body.removeChild(textArea);
+};
+
+const copySuccess = (index) => {
+   const copyButtons = document.querySelectorAll('.copy');
+   copyButtons[index].classList.add('copied');
+   setTimeout(() => {
+      copyButtons[index].classList.remove('copied');
+   }, 700)
 }

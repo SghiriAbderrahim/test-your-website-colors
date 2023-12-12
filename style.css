@@ -468,6 +468,14 @@ footer p span {
     background: var(--gr1);
 }
 
+.copied {
+    background-color: var(--theme) !important;
+}
+
+.copied:hover {
+    background-color: var(--theme) !important;
+}
+
 /* for mobile users */
 
 @media (max-width:710px) {
